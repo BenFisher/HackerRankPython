@@ -11,11 +11,18 @@ def testUsername(user):
                 return True
     return False
 
+def testUsernamesOptimized(user):
+    user_list = [ord(c) for c in list(user)]
+    for i in range(1, len(user_list)):
+        if user_list[i-1] > user_list[i]:
+            return True
+    return False 
+
 
 def possibleChanges(usernames):
     ret = []
     for name in usernames:
-        t = testUsername(name)
+        t = testUsernamesOptimized(name)
         if t == True:
             ret.append('YES')
         else:
